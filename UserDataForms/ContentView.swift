@@ -19,11 +19,6 @@ struct Users: Identifiable {
 
 class UsersViewModel: ObservableObject {
     @Published var users: [Users] = []
-    
-    func addUser(user: Users){
-        let user = Users(firstName: user.firstName, lastName: user.lastName, gender: user.gender, email: user.email, phone: user.phone, DOB: user.DOB)
-        users.append(user)
-    }
 }
 
 struct ContentView: View {
@@ -123,3 +118,9 @@ ForEach(1...15, id: \.self){index in
 */
 
 //UserCard(firstName: user.firstName, lastName: user.lastName, destination: UserDetail(user: user))
+/*
+ func addUser(user: Users){
+     let user = Users(firstName: user.firstName, lastName: user.lastName, gender: user.gender, email: user.email, phone: user.phone, DOB: user.DOB)
+     users.append(user)
+ }
+ */

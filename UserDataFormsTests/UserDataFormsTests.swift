@@ -11,23 +11,28 @@ import XCTest
 
 class UsersViewModelTest: XCTestCase{
     var viewModel: UsersViewModel!
-    var userModel: UserForms!
+    var userModel: UserFormsTemp!
+    var userView: UserDetail!
+    var user: Users!
     
     override func setUp(){
         super.setUp()
         viewModel = UsersViewModel()
-        userModel = UserForms(viewModel: UsersViewModel(), isPresented: .constant(true))
+        userModel = UserFormsTemp(viewModel: UsersViewModel(), isPresented: .constant(true), onSave: {_ in})
+        user = Users(firstName: "FirstName", lastName: "LastName", gender: "Other", email: "example@gmail.com", phone: "9150505050", DOB: Date.now)
     }
     
     override func tearDown(){
         viewModel = nil
+        userModel = nil
+        user = nil
         super.tearDown()
     }
     
     func testAddUser(){
         let initialCount = viewModel.users.count
         
-        let newUser = Users(firstName: "FirstName", lastName: "LastName", gender: "Other", email: "example@gmail.com", phone: "9150505050", DOB: Date.now)
+        let newUser = user!
         viewModel.users.append(newUser)
         XCTAssertEqual(viewModel.users.count, initialCount+1)
         XCTAssertEqual(viewModel.users[0].firstName, "FirstName")
@@ -49,6 +54,7 @@ class UsersViewModelTest: XCTestCase{
         XCTAssertTrue(userModel.isValidPhone(validPhone))
         XCTAssertFalse(userModel.isValidPhone(invalidPhone))
     }
+    
     
 }
 

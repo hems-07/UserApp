@@ -135,11 +135,11 @@ struct UserFormsTemp: View {
                 }
                 .disabled(!(isValidEmail(emailID) && isValidPhone(phone)))
                 
-                /*
+                //Button for instantly populating the forms
                 Button("Populate"){
                     populateDataForms()
                 }
-                 */
+                 
                 
             }
             
@@ -164,7 +164,7 @@ struct UserFormsTemp: View {
         return phonePredicate.evaluate(with: phone)
     }
     
-    /*
+    
      func populateDataForms(){
         firstName = "Hemanth"
         lastName = "Palani"
@@ -172,7 +172,7 @@ struct UserFormsTemp: View {
         emailID = "Hems@gmail.com"
         phone = "9150998077"
     }
-     */
+     
     
     func submit(){
         if (!isValidEmail(emailID) || !isValidPhone(phone)){
